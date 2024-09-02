@@ -1,0 +1,37 @@
+<div>
+  <h1 class="font-bold text-4xl">Edit Game</h1>
+  <p>Update the form below to edit the game.</p>
+
+  <%= form_with(model: @game, local: true) do |form| %>
+    <div>
+      <%= form.label :game_type %>
+      <%= form.text_field :game_type, value: @game.game_type %>
+    </div>
+
+    <div>
+      <%= form.label :winner %>
+      <%= form.text_field :winner, value: @game.winner %>
+    </div>
+
+    <div>
+      <%= form.label :player_names %>
+      <%= form.text_field :player_names, value: @game.player_names.join(", "), multiple: true %>
+    </div>
+
+    <div>
+      <%= form.label :runner_up %>
+      <%= form.text_field :runner_up, value: @game.runner_up %>
+    </div>
+
+    <div>
+      <%= form.label :user_id %>
+      <%= form.number_field :user_id, value: @game.user_id %>
+    </div>
+
+    <div>
+      <%= form.submit "Update Game" %>
+    </div>
+  <% end %>
+
+  <%= button_to "Delete Game", game_path(@game), method: :delete, data: { confirm: "Are you sure?" }, class: "mt-4 bg-red-500 text-white px-4 py-2 rounded" %>
+</div>

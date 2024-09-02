@@ -1,0 +1,38 @@
+<div>
+  <h1 class="font-bold text-4xl">New Game</h1>
+  <p>Fill out the form below to create a new game.</p>
+
+  <%= form_with(model: @game, local: true) do |form| %>
+ <div>
+      <%= form.label :game_type %>
+      <%= form.select :game_type, options_for_select([['Regular', 'Regular'], ['Expansion', 'Expansion']]) %>
+    </div>
+
+    <div>
+      <%= form.label :winner %>
+      <%= form.text_field :winner %>
+    </div>
+
+    <div data-controller="player-names">
+      <%= form.label :player_names %>
+      <div data-player-names-target="fields">
+        <%= form.text_field :player_names, name: 'game[player_names][]' %>
+      </div>
+      <button type="button" data-action="player-names#addField" class="bg-blue-500 text-white px-2 py-1 rounded mt-2">Add Player</button>
+    </div>
+
+    <div>
+      <%= form.label :runner_up %>
+      <%= form.text_field :runner_up %>
+    </div>
+
+    <div>
+      <%= form.label :user_id %>
+      <%= form.number_field :user_id %>
+    </div>
+
+    <div>
+      <%= form.submit "Create Game" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,33 @@
+<div>
+  <h1 class="font-bold text-4xl">Games List</h1>
+  <p>Below is the list of games created.</p>
+
+  <table class="table-auto w-full">
+    <thead>
+      <tr>
+        <th class="px-4 py-2">Game Number</th>
+        <th class="px-4 py-2">Date</th>
+        <th class="px-4 py-2">Game Type</th>
+        <th class="px-4 py-2">Players</th>
+        <th class="px-4 py-2">Runner Up</th>
+        <th class="px-4 py-2">Winner</th>
+        <th class="px-4 py-2">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @games.each_with_index do |game, index| %>
+        <tr>
+          <td class="border px-4 py-2"><%= index + 1 %></td>
+          <td class="border px-4 py-2"><%= game.created_at.strftime("%B %d, %Y") %></td>
+          <td class="border px-4 py-2"><%= game.game_type %></td>
+          <td class="border px-4 py-2"><%= game.player_names.join(", ") %></td>
+          <td class="border px-4 py-2"><%= game.runner_up %></td>
+          <td class="border px-4 py-2"><%= game.winner %></td>
+          <td class="border px-4 py-2">
+            <%= link_to 'Edit', edit_game_path(game), class: "bg-blue-500 text-white px-2 py-1 rounded" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
