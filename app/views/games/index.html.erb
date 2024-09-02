@@ -1,6 +1,6 @@
-<div>
-  <h1 class="font-bold text-4xl">Games List</h1>
-  <p>Below is the list of games created.</p>
+<div class="container mx-auto">
+  <h1 class="font-bold text-4xl mb-8">Games History</h1>
+
 
   <table class="table-auto w-full">
     <thead>
@@ -20,7 +20,7 @@
           <td class="border px-4 py-2"><%= index + 1 %></td>
           <td class="border px-4 py-2"><%= game.created_at.strftime("%B %d, %Y") %></td>
           <td class="border px-4 py-2"><%= game.game_type %></td>
-          <td class="border px-4 py-2"><%= game.player_names.join(", ") %></td>
+          <td class="border px-4 py-2"><%= game.player_names.join(" - ") %></td>
           <td class="border px-4 py-2"><%= game.runner_up %></td>
           <td class="border px-4 py-2"><%= game.winner %></td>
           <td class="border px-4 py-2">
